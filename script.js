@@ -1,125 +1,58 @@
+// exercice analyse
+// 4 event handlers à mettre 
+// ajouter la même ligne à un tableau et 3 de ses éléments TD
+// (en programmation, c'est 1 boucle, on créé une table et 
+// on rajoute 3 enfants TD à la ROW.
+// boucle de 0 à 2. = le i sert juste à changer le texte. )
+// le vrai indice commence à 1. 
+// 
+// dès qu'on clique sur le bouton : on récupère l'élément table et son indice à [0]
+// pour le premier.
+// on créé une ligne
+// puis on créé
+
+// mettre hander eb haut
+
 // ajouter une ligne
 
-document.getElementById("add").onclick = addRow;
+ // créer 1 ligne 
+// créer 3 colonnes
+// mettre le contenu 
 
 // fonction qui ajoute la ligne
 function addRow(){
    
     // récupère la référence du tableau par tagname 
-    var table = document.getElementById("table");
-    // var rowCount = table.rows.length;
-    
-    var row = table.insertRow();
-    var cell1 = row.insertCell(0);
-    var td = document.createElement("td");
-    cell1.style.fontSize = "20px";
-    cell1.innerHTML = "Texte 1";
-    row.appendChild(cell1);
-
-    var cell2 = row.insertCell(1);
-    var td = document.createElement("td");
-    cell2.style.fontSize = "20px";
-    cell2.innerHTML = "Texte 2";
-    row.appendChild(cell2); 
-
-    var cell3 = row.insertCell(2);
-    var td = document.createElement("td");
-    cell3.style.fontSize = "20px";
-    cell3.innerHTML = "Texte 3";
-    row.appendChild(cell3); 
-
-}; 
-
- 
+    var tables = document.getElementsByTagName("table")[0];
+    // on créé un TR qu'on stocke dans sa variable
+    var row = document.createElement("tr");
+    // dans ce TR, on doit boucler pour créer les 3 enfants TD 
+    // > conditions pour rester dans la boucle
+    for (let i = 1; i <= 3; i++) {
+    // crée un élément <td> qu'on va stocker dans une variable
+    var td = document.createElement("td"); 
+    // dans le td, on met du texte (au lieu du HTML innerHTML) + code d'interpolation
+    td.innerText = "Texte `${i}`";
+    // le texte créé dans toutes les TD, on ferme la TR
+    row.appendChild(td);
+    }
+    tables.appendChild(row);
+};
 
 
-var toto = addRow();
+function setSize(){
+    document.getElementById("td").style.fontSize = "medium";
+};
 
 // supprimer une ligne
-
-document.getElementById("del").onclick = dellRow;
-
 // fonction qui supprime la ligne
-function dellRow(){
-    // récupère la référence du tableau par tagname 
-    var table = document.getElementById("table"); 
-    // insére dans row count le nombre de lignes du tableau 
-    var rowCount = table.rows.length;
-    // supprime la dernière ligne créée du tableau 
-    table.deleteRow(rowCount -1);
-}; 
-
-var tata = dellRow();
 
 // augmenter taille de police 
-document.getElementById("more").onclick = increaseFont;
+
 // fonction qui augmente la taille de police
-function increaseFont(){
-    var td = document.getElementById("td");
-    td.style.fontSize = "20px";
-    sizeFont++;
-}; 
-
-var tutu = increaseFont();
-
-// var row = table.getElementsByTagName("tr");
-// var cell = document.getElementsByTagName("td");
-// 
-// var row = document.createElement("tr");
-// var cell = document.createElement("td");
-      // var cellText = document.createTextNode("Texte 1");
-      // cell.appendChild(cellText);
-      // row.appendChild(cell);
-// };
 
 
-// écoute le click sur le bouton et déclenche la fonction addRow
-// var btn = document.getElementById('add').onclick = function(){}
+// partie active onclick
 
-// var cell = row.insertCell(-1);
-// cell.innerHTML = "Texte 3";
-// }
-
-    // créer toutes les cellules
-    // for (var i = 0; i < 2; i++) {
-    // crée une ligne du tableau
-    // var row = table.createElement("tr");
-    
-    // for (var j = 0; j < 2; j++) {
-    // crée un élément <td> and un noeuf text, 
-    // faire que le texte colle au contenu de la cellule, 
-    // et mettre un <td> à la fin de la ligne du tableau
-    // var cell =  table.createElement("td");
-    // var cellText = table.createTextNode("Texte "+1+", dans colonne "+j)
-    // cell.appendChild(cellText);
-    //row.appendChild(cell);
-    // }
-    // ajouter une ligne à la fin du tableau 
-    //table.appendChild(row);
-    //}
-
-
-// var cell = row.insertCell(3)
-// cell.innerHTML = "Texte 4"
-// var addthetext2 =  row.insertCell(3);
-// addthetext2.innerHTML = "Texte 5";
-
-/*
-
-texte à l'intérieur de balises =  objet #text 
-
-1. click
-2. listen the click then 
-3. create a new row
-
-addrow
-deleterow
-increasesize
-decreasesize
-
-document.getElementByID
-windows.onload
-document.addEventListener
-on.click
-créer des variables dans lesquelles stocker le reultat des fonctions
-*/
+document.getElementById("add").onclick = addRow; 
+document.getElementById("del").onclick = dellRow;
